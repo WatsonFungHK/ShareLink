@@ -1,0 +1,16 @@
+<form #addLinks="ngForm" (ngSubmit)="onLinkSubmitted(addLinks.value)">
+	<div class="form-group">
+		<label>title</label>
+		<input type=text class="form-control" name="title" [ngModel]="titleDemo">
+	</div>
+	<div class="form-group">
+		<label>url</label>
+		<input type=text class="form-control" name="url" [ngModel]="urlDemo">
+	</div>
+	<div class="form-group">
+		<label>description</label>
+		<input type=text class="form-control" name="description" [ngModel]="descriptionDemo">
+	</div>
+
+	 <button (submit)="onLinkSubmitted($event)">Add Links</button> 
+</form>

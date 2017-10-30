@@ -1,0 +1,8 @@
+<div class="profileAndAddLinks grid row col-lg-5 col-md-5 col-sm-12 col-xs-12">
+  <app-profile></app-profile>
+  <app-add-link (linkSubmitted)="onLinkAdded($event)"></app-add-link>
+</div>
+<div class="searchAndLinks grid row col-lg-7 col-md-7 col-sm-12 col-xs-12">
+  <app-search (term)="onTermReceived($event)"></app-search>
+  <app-link *ngFor="let link of links | filter: term" [lnk]="link"></app-link>
+</div>

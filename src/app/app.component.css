@@ -1,0 +1,11 @@
+app-profile app-search app-link {
+	border-style: dotted;
+}
+
+app-root {
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	
+}
+
