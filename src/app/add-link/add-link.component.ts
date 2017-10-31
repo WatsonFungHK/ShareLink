@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl,FormGroup, Validators } from '@angular/forms'
 import { Link } from '../link/link.model'
 
 @Component({
@@ -7,18 +8,27 @@ import { Link } from '../link/link.model'
   styleUrls: ['./add-link.component.css']
 })
 export class AddLinkComponent implements OnInit {
-  titleDemo = "titleDemo"
-  urlDemo = "urlDemo"
-  descriptionDemo = "descriptionDemo"
+  addLinksForm = new FormGroup({
+    title: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
+    url: new FormControl(null, [Validators.required]),
+    description: new FormControl(null)
+  })
+
+
+
   @Output() linkSubmitted = new EventEmitter<Link>()
   constructor() { }
 
   ngOnInit() {
   }
 
-  onLinkSubmitted(linkData: any){
-    console.log('onLinkSubmitted happended. onLinkAdded() is being emitted');
-    (!linkData) ? console.log('cannot receive linkData') : console.log(linkData);
-    this.linkSubmitted.emit(new Link(linkData.title, linkData.url, linkData.description))
+  onLinkSubmitted(){
+    var val = this.addLinksForm.value
+    console.log(val)
+    this.linkSubmitted.emit(new Link(
+      val.title,
+      val.url,
+      val.description
+    ))
   }
 }
